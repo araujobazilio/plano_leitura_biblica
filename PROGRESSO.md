@@ -127,6 +127,26 @@
 - Adicionar opção de compartilhamento do progresso
 - Implementar notificações diárias
 
+## Atualização de Configuração Railway - 03/02/2025
+
+### Ajustes de Versão PHP
+- Atualizado PHP para versão 8.2
+- Criado arquivo `railway.toml` para configuração do deploy
+- Atualizado `composer.json` com requisitos de versão
+- Configurado builder nixpacks para PHP 8.2
+
+### Configurações de Deploy
+- Definido comando de inicialização do servidor PHP
+- Configurado healthcheck para monitoramento
+- Adicionada política de restart em caso de falha
+- Especificados pacotes Nix necessários
+
+### Próximos Passos
+- Testar deploy com nova configuração
+- Verificar logs de erro se necessário
+- Confirmar compatibilidade do código com PHP 8.2
+- Validar conexão com banco de dados
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
