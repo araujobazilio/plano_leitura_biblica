@@ -1,0 +1,8 @@
+{
+    "name": "plano-leitura-biblica",
+    "description": "Aplicativo de plano de leitura bíblica em 365 dias",
+    "require": {
+        "php": "^8.0",
+        "ext-mysqli": "*"
+    }
+}
