@@ -253,6 +253,26 @@
 - Adicionar recursos gradualmente se necessário
 - Monitorar estabilidade do serviço
 
+## Ajuste de Porta Dinâmica - 03/02/2025
+
+### Correções no Deploy
+- Corrigido problema com porta dinâmica no Railway
+- Adicionado script de entrypoint para ajuste automático da porta
+- Criado `.env.example` para documentação das variáveis
+- Mantida compatibilidade com variáveis do Railway
+
+### Detalhes Técnicos
+- Script para substituir porta 80 pela variável $PORT
+- Uso do docker-php-entrypoint para configuração dinâmica
+- Documentação das variáveis de ambiente necessárias
+- Configuração do host MySQL interno do Railway
+
+### Próximos Passos
+- Testar deploy com nova configuração de porta
+- Verificar logs do Apache
+- Confirmar conexão com banco de dados
+- Validar funcionamento da aplicação
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura

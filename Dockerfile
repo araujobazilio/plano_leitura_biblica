@@ -9,12 +9,15 @@ RUN a2enmod rewrite
 # Copiar arquivos
 COPY . /var/www/html/
 
-# Permissões
+# Configurar permissões
 RUN chown -R www-data:www-data /var/www/html
 
-# Porta
+# Script para ajustar a porta do Apache
+RUN echo '#!/bin/bash\n\
+sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf\n\
+apache2-foreground' > /usr/local/bin/docker-php-entrypoint \
+    && chmod +x /usr/local/bin/docker-php-entrypoint
+
+# Porta padrão (será sobrescrita pelo Railway)
 ENV PORT=80
 EXPOSE 80
-
-# Iniciar Apache
-CMD apache2-foreground
