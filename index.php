@@ -1,5 +1,21 @@
 <?php
-require_once 'config.php';
+// Configurações do banco de dados
+$DB_HOST = getenv('DB_HOST') ?: 'localhost';
+$DB_USER = getenv('DB_USER') ?: 'root';
+$DB_PASSWORD = getenv('DB_PASSWORD') ?: '';
+$DB_DATABASE = getenv('DB_DATABASE') ?: 'railway';
+
+// Criar conexão
+$conexao = new mysqli($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_DATABASE);
+
+// Verificar conexão
+if ($conexao->connect_error) {
+    error_log("Erro de conexão: " . $conexao->connect_error);
+    die("Erro de conexão com o banco de dados. Por favor, tente novamente mais tarde.");
+}
+
+// Configurar charset
+$conexao->set_charset("utf8mb4");
 
 // Calcular o dia do ano
 $dia_do_ano = date('z') + 1;

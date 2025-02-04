@@ -332,6 +332,26 @@
 - Validar criação do config.php
 - Monitorar mensagens de erro
 
+## Simplificação da Configuração - 04/02/2025
+
+### Mudanças na Estrutura
+- Removida dependência do arquivo config.php
+- Integrada configuração diretamente no index.php
+- Simplificado processo de deploy
+- Mantidas variáveis de ambiente
+
+### Benefícios
+- Menos arquivos para gerenciar
+- Configuração mais direta
+- Sem problemas com .gitignore
+- Mantida segurança das credenciais
+
+### Próximos Passos
+- Testar conexão com banco
+- Verificar funcionamento da aplicação
+- Monitorar logs de erro
+- Validar variáveis de ambiente
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
