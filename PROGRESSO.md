@@ -13,6 +13,26 @@
 - `MYSQL_PASSWORD`: Senha do banco de dados
 - `MYSQL_DATABASE`: Nome do banco de dados
 
+## Preparação para Deploy no Railway - 03/02/2025
+
+### Configurações de Infraestrutura
+- Criado `nixpacks.toml` para configuração do ambiente PHP
+- Atualizado `Procfile` para inicialização do servidor web
+- Configurado suporte ao PHP 8.1
+- Adicionadas instruções detalhadas de deploy no README
+
+### Variáveis de Ambiente
+- Configuradas variáveis para conexão com banco de dados MySQL
+- Suporte a configurações dinâmicas via `getenv()`
+- Removido `config.php` do controle de versão
+- Adicionado `config.example.php` como template
+
+### Próximos Passos
+- Testar deploy no Railway
+- Verificar configurações de banco de dados
+- Importar schema do `database.sql`
+- Realizar testes de funcionalidade
+
 ## Atualização do Banco de Dados (database.sql)
 - Adicionado plano de leitura completo para 365 dias
 - Incluídas colunas para dia, passagem, mês, status de leitura e data de leitura
