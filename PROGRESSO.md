@@ -33,6 +33,25 @@
 - Importar schema do `database.sql`
 - Realizar testes de funcionalidade
 
+## Tentativa de Deploy no Railway - Ajustes - 03/02/2025
+
+### Mudanças na Configuração
+- Removido `nixpacks.toml`
+- Adicionado `railway.json` para configuração de deploy
+- Atualizado `Procfile` com comando de inicialização mais específico
+- Configuração simplificada para deploy no Railway
+
+### Estratégias de Configuração
+- Utilizado arquivo `railway.json` para definir ambiente
+- Especificado PHP 8.1 como versão
+- Configurado comando de inicialização para rodar a partir do `index.php`
+
+### Próximos Passos
+- Verificar configurações de deploy
+- Testar conexão com banco de dados
+- Validar inicialização do servidor
+- Realizar testes de funcionalidade no ambiente de produção
+
 ## Atualização do Banco de Dados (database.sql)
 - Adicionado plano de leitura completo para 365 dias
 - Incluídas colunas para dia, passagem, mês, status de leitura e data de leitura
