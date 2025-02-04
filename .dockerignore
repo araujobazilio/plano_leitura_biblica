@@ -1,0 +1,11 @@
+.git
+.gitignore
+.nixpacks
+nixpacks.toml
+railway.toml
+config.php
+vendor/
+node_modules/
+*.log
+.env
+.DS_Store

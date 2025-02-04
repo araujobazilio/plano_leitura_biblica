@@ -167,6 +167,26 @@
 - Validar conexão com banco de dados
 - Testar deploy no Railway com Docker
 
+## Otimização do Dockerfile - 03/02/2025
+
+### Ajustes na Configuração Docker
+- Simplificado Dockerfile para deploy mais direto
+- Adicionadas extensões PDO além do mysqli
+- Mantida configuração do Apache
+- Criado `.dockerignore` para limpar build
+
+### Melhorias Implementadas
+- Instalação de extensões PHP adicionais
+- Configuração de permissões e módulos do Apache
+- Remoção de configurações redundantes
+- Preparação para deploy mais limpo
+
+### Próximos Passos
+- Verificar build do Docker
+- Testar conexão com banco de dados
+- Validar funcionamento das URLs
+- Realizar testes de deploy no Railway
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
