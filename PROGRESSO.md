@@ -208,6 +208,31 @@
 - Monitorar tempo de inicialização
 - Validar conexão com banco
 
+## Depuração de Deploy - 03/02/2025
+
+### Melhorias no Healthcheck
+- Adicionada verificação detalhada de variáveis de ambiente
+- Implementado log de erros mais robusto
+- Teste de conexão com banco de dados mais completo
+
+### Ajustes no Dockerfile
+- Habilitado modo de desenvolvimento do PHP
+- Ativados logs de erros detalhados
+- Adicionado script de entrypoint para verificações
+- Configurada porta 8080 para compatibilidade
+
+### Novo Script de Entrypoint
+- Verifica variáveis de ambiente antes do start
+- Imprime configurações para facilitar debug
+- Substitui dinamicamente a porta do Apache
+- Inicializa o servidor com informações de contexto
+
+### Próximos Passos
+- Verificar logs de inicialização
+- Validar configurações de ambiente
+- Testar conexão com banco de dados
+- Monitorar processo de deploy
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
