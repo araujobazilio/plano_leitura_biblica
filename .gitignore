@@ -4,9 +4,9 @@ composer.lock
 
 # Arquivos de configuração
 .env
-config.php
 *.config.php
 !config.example.php
+config.php
 
 # Arquivos de sistema
 .DS_Store

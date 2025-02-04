@@ -293,6 +293,25 @@
 - Monitorar política de restart
 - Validar configuração de porta
 
+## Configuração de Arquivo de Conexão - 04/02/2025
+
+### Correção de Configuração
+- Criado `config.php` a partir do `config.example.php`
+- Adicionado `config.php` ao `.gitignore`
+- Garantida segurança de credenciais
+- Mantido exemplo de configuração no repositório
+
+### Detalhes da Configuração
+- Arquivo de configuração copiado para o ambiente de deploy
+- Variáveis de ambiente mantidas no Railway
+- Ignorado rastreamento de `config.php`
+
+### Próximos Passos
+- Verificar conexão com banco de dados
+- Testar funcionalidades principais
+- Validar configurações de ambiente
+- Monitorar logs de inicialização
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
