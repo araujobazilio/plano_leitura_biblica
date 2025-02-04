@@ -52,6 +52,30 @@
 - Validar inicialização do servidor
 - Realizar testes de funcionalidade no ambiente de produção
 
+## Configuração para Deploy no Railway - Variáveis de Ambiente
+
+### Mudanças na Configuração de Conexão
+- Atualizado `config.example.php` para usar variáveis de ambiente
+- Alterados nomes das variáveis para padrão Railway:
+  - `DB_HOST`
+  - `DB_USER`
+  - `DB_PASSWORD`
+  - `DB_DATABASE`
+- Adicionado tratamento de erros na conexão
+- Implementado fallback para configurações locais
+
+### Estratégias de Configuração
+- Suporte a ambientes de desenvolvimento e produção
+- Variáveis de ambiente com valores padrão
+- Tratamento de exceções na conexão com banco de dados
+- Log de erros para depuração
+
+### Próximos Passos
+- Testar conexão com banco de dados no Railway
+- Verificar importação do schema
+- Validar funcionamento das variáveis de ambiente
+- Realizar testes de integração
+
 ## Atualização do Banco de Dados (database.sql)
 - Adicionado plano de leitura completo para 365 dias
 - Incluídas colunas para dia, passagem, mês, status de leitura e data de leitura
