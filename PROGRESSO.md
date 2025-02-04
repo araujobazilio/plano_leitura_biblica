@@ -147,6 +147,26 @@
 - Confirmar compatibilidade do código com PHP 8.2
 - Validar conexão com banco de dados
 
+## Mudança para Dockerfile - 03/02/2025
+
+### Alterações na Configuração
+- Criado `Dockerfile` personalizado
+- Configurado ambiente PHP 8.2 com Apache
+- Removida configuração nixpacks
+- Adicionadas extensões necessárias do PHP
+
+### Detalhes da Configuração Docker
+- Imagem base: php:8.2-apache
+- Instalação da extensão mysqli
+- Configuração do Apache para servir a aplicação
+- Ajuste de permissões e diretórios
+
+### Próximos Passos
+- Testar build do Docker
+- Verificar configuração do Apache
+- Validar conexão com banco de dados
+- Testar deploy no Railway com Docker
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
