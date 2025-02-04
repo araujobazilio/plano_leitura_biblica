@@ -424,6 +424,26 @@
    - Testar conexão novamente
    - Monitorar logs de erro
 
+## Ajuste de Variáveis MySQL - 04/02/2025
+
+### Correções de Conexão
+- Ajustado nome das variáveis para corresponder ao Railway
+- Fixado usuário root como padrão
+- Atualizada variável da senha root
+- Convertida porta para inteiro
+
+### Variáveis Atualizadas
+- MYSQLHOST para host do banco
+- MYSQL_ROOT_PASSWORD para senha
+- MYSQLDATABASE para nome do banco
+- MYSQLPORT para porta de conexão
+
+### Próximos Passos
+- Testar conexão com novas variáveis
+- Verificar logs de erro
+- Validar configurações no Railway
+- Monitorar status da conexão
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura

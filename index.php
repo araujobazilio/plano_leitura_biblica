@@ -7,8 +7,8 @@ error_reporting(E_ALL);
 // Configurações do banco de dados
 $DB_HOST = getenv('MYSQLHOST') ?: 'localhost';
 $DB_PORT = getenv('MYSQLPORT') ?: '3306';
-$DB_USER = getenv('MYSQLUSER') ?: 'root';
-$DB_PASSWORD = getenv('MYSQLPASSWORD') ?: '';
+$DB_USER = 'root'; // usuário padrão do Railway
+$DB_PASSWORD = getenv('MYSQL_ROOT_PASSWORD') ?: '';
 $DB_DATABASE = getenv('MYSQLDATABASE') ?: 'railway';
 
 // Debug - mostrar variáveis (remover em produção)
@@ -24,7 +24,7 @@ try {
         $DB_USER,
         $DB_PASSWORD,
         $DB_DATABASE,
-        $DB_PORT
+        intval($DB_PORT)
     );
 
     // Verificar conexão
