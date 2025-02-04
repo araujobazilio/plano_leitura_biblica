@@ -352,6 +352,26 @@
 - Monitorar logs de erro
 - Validar variáveis de ambiente
 
+## Ajustes de Conexão MySQL - 04/02/2025
+
+### Correções de Conexão
+- Atualizada variável DB_HOST para usar RAILWAY_TCP_PROXY_DOMAIN
+- Adicionado código de debug para rastrear problemas
+- Melhorado tratamento de erros de conexão
+- Habilitada exibição detalhada de erros
+
+### Variáveis de Ambiente
+- DB_HOST = ${{RAILWAY_TCP_PROXY_DOMAIN}}
+- DB_USER = root
+- DB_PASSWORD = (senha gerada pelo Railway)
+- DB_DATABASE = railway
+
+### Próximos Passos
+- Configurar variáveis no Railway
+- Verificar logs de conexão
+- Testar conexão com banco
+- Remover código de debug após sucesso
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura

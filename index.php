@@ -1,21 +1,36 @@
 <?php
+// Habilitar exibição de erros para debug
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Configurações do banco de dados
 $DB_HOST = getenv('DB_HOST') ?: 'localhost';
 $DB_USER = getenv('DB_USER') ?: 'root';
 $DB_PASSWORD = getenv('DB_PASSWORD') ?: '';
 $DB_DATABASE = getenv('DB_DATABASE') ?: 'railway';
 
+// Debug - mostrar variáveis (remover em produção)
+error_log("DB_HOST: " . $DB_HOST);
+error_log("DB_USER: " . $DB_USER);
+error_log("DB_DATABASE: " . $DB_DATABASE);
+
 // Criar conexão
-$conexao = new mysqli($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_DATABASE);
+try {
+    $conexao = new mysqli($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_DATABASE);
 
-// Verificar conexão
-if ($conexao->connect_error) {
-    error_log("Erro de conexão: " . $conexao->connect_error);
-    die("Erro de conexão com o banco de dados. Por favor, tente novamente mais tarde.");
+    // Verificar conexão
+    if ($conexao->connect_error) {
+        error_log("Erro de conexão: " . $conexao->connect_error);
+        die("Erro de conexão com o banco de dados. Por favor, tente novamente mais tarde.");
+    }
+
+    // Configurar charset
+    $conexao->set_charset("utf8mb4");
+} catch (Exception $e) {
+    error_log("Erro ao conectar: " . $e->getMessage());
+    die("Erro ao conectar com o banco de dados: " . $e->getMessage());
 }
-
-// Configurar charset
-$conexao->set_charset("utf8mb4");
 
 // Calcular o dia do ano
 $dia_do_ano = date('z') + 1;
