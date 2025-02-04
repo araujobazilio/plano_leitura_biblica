@@ -187,6 +187,27 @@
 - Validar funcionamento das URLs
 - Realizar testes de deploy no Railway
 
+## Implementação de Healthcheck - 03/02/2025
+
+### Novas Funcionalidades
+- Adicionado endpoint `/health.php` para monitoramento
+- Implementado healthcheck no Dockerfile
+- Configurado timeout e retries apropriados
+- Adicionado teste de conexão com banco de dados
+
+### Melhorias no Dockerfile
+- Otimizada instalação de dependências
+- Adicionado suporte a ZIP
+- Configurado PHP.ini de produção
+- Ajustada porta dinâmica para Railway
+- Melhoradas permissões de arquivos
+
+### Próximos Passos
+- Testar endpoint de healthcheck
+- Verificar logs do container
+- Monitorar tempo de inicialização
+- Validar conexão com banco
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
