@@ -4,34 +4,23 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Configurações do banco de dados
-$DB_HOST = getenv('MYSQLHOST');
-$DB_PORT = getenv('MYSQLPORT');
-$DB_USER = getenv('MYSQLUSER');
-$DB_PASSWORD = getenv('MYSQLPASSWORD');
-$DB_DATABASE = getenv('MYSQLDATABASE');
-
-// Debug - mostrar variáveis (remover em produção)
-error_log("Configurações do banco:");
-error_log("DB_HOST: " . $DB_HOST);
-error_log("DB_PORT: " . $DB_PORT);
-error_log("DB_USER: " . $DB_USER);
-error_log("DB_DATABASE: " . $DB_DATABASE);
-
-// Verificar se todas as variáveis necessárias estão definidas
-if (!$DB_HOST || !$DB_PORT || !$DB_USER || !$DB_PASSWORD || !$DB_DATABASE) {
-    error_log("Erro: Variáveis de ambiente do MySQL não configuradas corretamente");
+// Obter URL de conexão do MySQL
+$mysql_url = getenv('MYSQL_URL');
+if (!$mysql_url) {
+    error_log("Erro: MYSQL_URL não encontrada");
     die("Erro: Configuração do banco de dados incompleta");
 }
 
-// Criar conexão
+error_log("MYSQL_URL encontrada, tentando conectar...");
+
+// Criar conexão usando URL
 try {
     $conexao = new mysqli(
-        $DB_HOST,
-        $DB_USER,
-        $DB_PASSWORD,
-        $DB_DATABASE,
-        intval($DB_PORT)
+        parse_url($mysql_url, PHP_URL_HOST),
+        parse_url($mysql_url, PHP_URL_USER),
+        parse_url($mysql_url, PHP_URL_PASS),
+        trim(parse_url($mysql_url, PHP_URL_PATH), '/'),
+        parse_url($mysql_url, PHP_URL_PORT) ?: 3306
     );
 
     // Verificar conexão
@@ -42,6 +31,8 @@ try {
 
     // Configurar charset
     $conexao->set_charset("utf8mb4");
+    
+    error_log("Conexão com o banco estabelecida com sucesso!");
 } catch (Exception $e) {
     error_log("Erro ao conectar: " . $e->getMessage());
     die("Erro ao conectar com o banco de dados: " . $e->getMessage());
