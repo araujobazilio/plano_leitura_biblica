@@ -372,6 +372,32 @@
 - Testar conexão com banco
 - Remover código de debug após sucesso
 
+## Otimização de Conexão MySQL - 04/02/2025
+
+### Ajuste de Endpoint
+- Alterado para usar RAILWAY_PRIVATE_DOMAIN
+- Evitado custos de egress
+- Melhorada eficiência da conexão
+- Seguida recomendação do Railway
+
+### Variáveis de Ambiente Atualizadas
+- DB_HOST = ${{RAILWAY_PRIVATE_DOMAIN}}
+- DB_USER = root
+- DB_PASSWORD = (senha gerada pelo Railway)
+- DB_DATABASE = railway
+
+### Benefícios
+- Redução de custos
+- Conexão mais segura
+- Melhor performance
+- Uso de rede interna do Railway
+
+### Próximos Passos
+- Testar conexão com novo endpoint
+- Verificar logs de erro
+- Validar funcionamento da aplicação
+- Monitorar performance
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
