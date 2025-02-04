@@ -233,6 +233,26 @@
 - Testar conexão com banco de dados
 - Monitorar processo de deploy
 
+## Simplificação do Deploy - 03/02/2025
+
+### Simplificações Realizadas
+- Reduzido Dockerfile ao mínimo necessário
+- Removidas configurações complexas
+- Simplificado healthcheck
+- Removido script de entrypoint
+
+### Configuração Básica
+- Apenas extensão mysqli
+- Apache com mod_rewrite
+- Porta 80 padrão
+- Permissões básicas
+
+### Próximos Passos
+- Testar deploy com configuração mínima
+- Verificar logs de erro
+- Adicionar recursos gradualmente se necessário
+- Monitorar estabilidade do serviço
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
