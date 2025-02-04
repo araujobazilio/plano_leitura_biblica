@@ -4,22 +4,24 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Tentar usar a URL completa do MySQL primeiro
+// Tentar usar a URL interna do MySQL primeiro
 $mysql_url = getenv('MYSQL_URL');
-if ($mysql_url) {
-    $url_parts = parse_url($mysql_url);
-    $DB_HOST = $url_parts['host'];
-    $DB_PORT = $url_parts['port'];
-    $DB_USER = $url_parts['user'];
-    $DB_PASSWORD = $url_parts['pass'];
-    $DB_DATABASE = substr($url_parts['path'], 1); // remove leading /
-} else {
+if (!$mysql_url) {
+    error_log("MYSQL_URL não encontrada, tentando variáveis individuais");
     // Fallback para variáveis individuais
     $DB_HOST = getenv('MYSQLHOST') ?: 'localhost';
     $DB_PORT = getenv('MYSQLPORT') ?: '3306';
     $DB_USER = 'root';
     $DB_PASSWORD = getenv('MYSQL_ROOT_PASSWORD') ?: '';
     $DB_DATABASE = getenv('MYSQLDATABASE') ?: 'railway';
+} else {
+    error_log("Usando MYSQL_URL para conexão");
+    $url_parts = parse_url($mysql_url);
+    $DB_HOST = $url_parts['host'];
+    $DB_PORT = $url_parts['port'];
+    $DB_USER = $url_parts['user'];
+    $DB_PASSWORD = $url_parts['pass'];
+    $DB_DATABASE = substr($url_parts['path'], 1); // remove leading /
 }
 
 // Debug - mostrar variáveis (remover em produção)
