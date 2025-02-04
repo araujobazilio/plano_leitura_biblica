@@ -398,6 +398,32 @@
 - Validar funcionamento da aplicação
 - Monitorar performance
 
+## Configuração MySQL Railway - 04/02/2025
+
+### Ajustes de Conexão
+- Alterado para usar variáveis padrão do MySQL do Railway
+- Adicionado suporte à porta do MySQL
+- Melhorado debug de conexão
+- Atualizada estrutura de conexão
+
+### Variáveis de Ambiente
+- MYSQLHOST (gerado pelo Railway)
+- MYSQLPORT (gerado pelo Railway)
+- MYSQLUSER (gerado pelo Railway)
+- MYSQLPASSWORD (gerado pelo Railway)
+- MYSQLDATABASE (gerado pelo Railway)
+
+### Próximos Passos
+1. Adicionar MySQL no Railway:
+   - Ir em "Add Service"
+   - Escolher "Database" -> "MySQL"
+   - Aguardar criação do banco
+   
+2. Após criação:
+   - Verificar variáveis geradas
+   - Testar conexão novamente
+   - Monitorar logs de erro
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura

@@ -5,19 +5,27 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Configurações do banco de dados
-$DB_HOST = getenv('DB_HOST') ?: 'localhost';
-$DB_USER = getenv('DB_USER') ?: 'root';
-$DB_PASSWORD = getenv('DB_PASSWORD') ?: '';
-$DB_DATABASE = getenv('DB_DATABASE') ?: 'railway';
+$DB_HOST = getenv('MYSQLHOST') ?: 'localhost';
+$DB_PORT = getenv('MYSQLPORT') ?: '3306';
+$DB_USER = getenv('MYSQLUSER') ?: 'root';
+$DB_PASSWORD = getenv('MYSQLPASSWORD') ?: '';
+$DB_DATABASE = getenv('MYSQLDATABASE') ?: 'railway';
 
 // Debug - mostrar variáveis (remover em produção)
 error_log("DB_HOST: " . $DB_HOST);
+error_log("DB_PORT: " . $DB_PORT);
 error_log("DB_USER: " . $DB_USER);
 error_log("DB_DATABASE: " . $DB_DATABASE);
 
 // Criar conexão
 try {
-    $conexao = new mysqli($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_DATABASE);
+    $conexao = new mysqli(
+        $DB_HOST,
+        $DB_USER,
+        $DB_PASSWORD,
+        $DB_DATABASE,
+        $DB_PORT
+    );
 
     // Verificar conexão
     if ($conexao->connect_error) {
