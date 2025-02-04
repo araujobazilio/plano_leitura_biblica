@@ -9,8 +9,12 @@ RUN a2enmod rewrite
 # Copiar arquivos
 COPY . /var/www/html/
 
+# Criar config.php a partir do example
+RUN cp /var/www/html/config.example.php /var/www/html/config.php
+
 # Configurar permissões
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod 755 /var/www/html/config.php
 
 # Configurar porta
 ENV PORT=3000

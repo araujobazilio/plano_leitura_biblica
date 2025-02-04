@@ -3,7 +3,7 @@
 $DB_HOST = getenv('DB_HOST') ?: 'localhost';
 $DB_USER = getenv('DB_USER') ?: 'root';
 $DB_PASSWORD = getenv('DB_PASSWORD') ?: '';
-$DB_DATABASE = getenv('DB_DATABASE') ?: 'plano_leitura_biblica';
+$DB_DATABASE = getenv('DB_DATABASE') ?: 'railway';
 
 try {
     // Criar conexão
@@ -11,7 +11,8 @@ try {
     
     // Verificar conexão
     if ($conexao->connect_error) {
-        throw new Exception("Falha na conexão: " . $conexao->connect_error);
+        error_log("Erro de conexão: " . $conexao->connect_error);
+        die("Erro de conexão com o banco de dados. Por favor, tente novamente mais tarde.");
     }
     
     // Configurar charset

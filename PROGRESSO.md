@@ -312,6 +312,26 @@
 - Validar configurações de ambiente
 - Monitorar logs de inicialização
 
+## Ajustes de Configuração - 04/02/2025
+
+### Melhorias no Deploy
+- Adicionada criação automática do config.php no Dockerfile
+- Ajustadas permissões do arquivo de configuração
+- Melhorada mensagem de erro de conexão
+- Configurado log de erros mais detalhado
+
+### Configurações do Banco
+- Ajustado nome padrão do banco para 'railway'
+- Adicionado fallback para variáveis de ambiente
+- Melhorado tratamento de erros de conexão
+- Configurado charset UTF-8 por padrão
+
+### Próximos Passos
+- Verificar logs de erro no Railway
+- Testar conexão com banco de dados
+- Validar criação do config.php
+- Monitorar mensagens de erro
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
