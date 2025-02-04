@@ -7,58 +7,56 @@ function logError($message) {
 }
 
 try {
-    // Verificar variáveis de ambiente
-    $requiredEnvVars = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_DATABASE'];
-    $missingVars = [];
-    
-    foreach ($requiredEnvVars as $var) {
-        if (!getenv($var)) {
-            $missingVars[] = $var;
-        }
-    }
-    
-    if (!empty($missingVars)) {
-        throw new Exception('Missing environment variables: ' . implode(', ', $missingVars));
+    // Verificar se MYSQL_URL está definida
+    $mysql_url = getenv('MYSQL_URL');
+    if (!$mysql_url) {
+        throw new Exception('Missing MYSQL_URL environment variable');
     }
 
-    // Tentar conexão com o banco de dados
-    $host = getenv('DB_HOST');
-    $user = getenv('DB_USER');
-    $pass = getenv('DB_PASSWORD');
-    $db = getenv('DB_DATABASE');
+    // Extrair informações da URL
+    $db_parts = parse_url($mysql_url);
+    if (!$db_parts) {
+        throw new Exception('Invalid MYSQL_URL format');
+    }
 
-    $conn = new mysqli($host, $user, $pass, $db);
+    // Criar conexão
+    $conn = new mysqli(
+        $db_parts['host'],
+        $db_parts['user'],
+        $db_parts['pass'],
+        trim($db_parts['path'], '/'),
+        $db_parts['port'] ?: 3306
+    );
 
+    // Verificar conexão
     if ($conn->connect_error) {
         throw new Exception('Database connection failed: ' . $conn->connect_error);
     }
 
-    // Teste simples de consulta
-    $result = $conn->query("SELECT 1");
-    
-    if ($result === false) {
-        throw new Exception('Simple query test failed');
+    // Testar uma query simples
+    $result = $conn->query('SELECT 1');
+    if (!$result) {
+        throw new Exception('Database query failed');
     }
 
+    // Fechar conexão
     $conn->close();
 
     // Resposta de sucesso
     http_response_code(200);
     echo json_encode([
-        'status' => 'healthy', 
-        'database' => 'connected',
-        'message' => 'All systems operational'
+        'status' => 'healthy',
+        'message' => 'Application is running and database connection is working'
     ]);
 
 } catch (Exception $e) {
     // Log do erro
-    logError($e->getMessage());
+    logError('Health check failed: ' . $e->getMessage());
 
     // Resposta de erro
     http_response_code(500);
     echo json_encode([
-        'status' => 'unhealthy', 
-        'error' => $e->getMessage()
+        'status' => 'unhealthy',
+        'message' => $e->getMessage()
     ]);
-    exit(1);
 }

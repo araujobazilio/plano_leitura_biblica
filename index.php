@@ -11,16 +11,29 @@ if (!$mysql_url) {
     die("Erro: Configuração do banco de dados incompleta");
 }
 
-error_log("MYSQL_URL encontrada, tentando conectar...");
+error_log("MYSQL_URL encontrada: " . preg_replace('/(:.*@)/', ':****@', $mysql_url));
+
+// Parse da URL
+$db_parts = parse_url($mysql_url);
+if (!$db_parts) {
+    error_log("Erro: URL do MySQL inválida");
+    die("Erro: URL do banco de dados inválida");
+}
+
+error_log("Informações do banco:");
+error_log("Host: " . $db_parts['host']);
+error_log("Port: " . ($db_parts['port'] ?? '3306'));
+error_log("User: " . $db_parts['user']);
+error_log("Path: " . trim($db_parts['path'], '/'));
 
 // Criar conexão usando URL
 try {
     $conexao = new mysqli(
-        parse_url($mysql_url, PHP_URL_HOST),
-        parse_url($mysql_url, PHP_URL_USER),
-        parse_url($mysql_url, PHP_URL_PASS),
-        trim(parse_url($mysql_url, PHP_URL_PATH), '/'),
-        parse_url($mysql_url, PHP_URL_PORT) ?: 3306
+        $db_parts['host'],
+        $db_parts['user'],
+        $db_parts['pass'],
+        trim($db_parts['path'], '/'),
+        $db_parts['port'] ?? 3306
     );
 
     // Verificar conexão
