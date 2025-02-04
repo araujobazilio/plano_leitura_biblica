@@ -12,12 +12,9 @@ COPY . /var/www/html/
 # Configurar permissões
 RUN chown -R www-data:www-data /var/www/html
 
-# Script para ajustar a porta do Apache
-RUN echo '#!/bin/bash\n\
-sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf\n\
-apache2-foreground' > /usr/local/bin/docker-php-entrypoint \
-    && chmod +x /usr/local/bin/docker-php-entrypoint
+# Configurar porta
+ENV PORT=3000
+EXPOSE 3000
 
-# Porta padrão (será sobrescrita pelo Railway)
-ENV PORT=80
-EXPOSE 80
+# Comando para iniciar
+CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf && apache2-foreground

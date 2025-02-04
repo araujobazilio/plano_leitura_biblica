@@ -273,6 +273,26 @@
 - Confirmar conexão com banco de dados
 - Validar funcionamento da aplicação
 
+## Nova Configuração de Deploy - 03/02/2025
+
+### Alterações no Dockerfile
+- Simplificado processo de inicialização
+- Configurada porta 3000 como padrão
+- Removido entrypoint customizado
+- Comando direto para ajuste de porta
+
+### Configuração Railway
+- Atualizado railway.toml para usar Dockerfile
+- Configurada política de restart
+- Removida configuração nixpacks
+- Ajustado número máximo de tentativas
+
+### Próximos Passos
+- Testar novo deploy
+- Verificar logs de inicialização
+- Monitorar política de restart
+- Validar configuração de porta
+
 ## Próximos Passos
 - Testar a inserção dos dados no banco de dados
 - Verificar a funcionalidade de marcação de leitura
