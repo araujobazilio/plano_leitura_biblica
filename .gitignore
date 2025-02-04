@@ -1,4 +1,44 @@
-vendor/
+# Dependências
+/vendor/
+composer.lock
+
+# Arquivos de configuração
 .env
-*.log
+config.php
+*.config.php
+!config.example.php
+
+# Arquivos de sistema
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs e arquivos temporários
+*.log
+*.cache
+*.tmp
+/logs/
+/temp/
+
+# IDEs e editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Arquivos de ambiente local
+.env.local
+.env.*.local
+
+# Outros
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
